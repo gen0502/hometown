@@ -137,7 +137,7 @@
         <h2>风景名胜</h2>
         <p>武邑拥有多处自然与人文景观，如关津公园、动物园等，是休闲观光的好去处。</p>
         <div class="image-container">
-            <img id="sceneryImage" src="https://picsum.photos/id/1025/600/400" alt="武邑景点" />
+            <img id="sceneryImage" src="view1.jpg" alt="武邑景点" />
             <!-- 点击切换图片按钮 -->
             <button class="btn" onclick="changeImage()">换一张图片</button>
         </div>
@@ -148,7 +148,7 @@
         <h2>地方文化</h2>
         <p>这里有传统的武邑琴书、丰富的民俗节庆活动，还有源远流长的教育文化氛围，是文化与现代交融的典范。</p>
 	<div class="image-container">
-            <img id="sceneryImage" src="https://picsum.photos/id/1025/600/400" alt="武邑文化" />
+            <img id="sceneryImage" src="庙会1.jpg" alt="武邑文化" />
             <!-- 点击切换图片按钮 -->
             <button class="btn" onclick="changeImage()">换一张图片</button>
         </div>
@@ -169,13 +169,11 @@
     <script>
         // 图片数组，用于风景区切换
         const images = [
-            "https://picsum.photos/id/1025/600/400",
-            "https://picsum.photos/id/1043/600/400",
-            "https://picsum.photos/id/1066/600/400"
+            "view2.jpg"
         ];
         let currentIndex = 0; // 当前图片索引
 
-        // 切换风景图片函数
+        // 切换图片函数
         function changeImage() {
             currentIndex = (currentIndex + 1) % images.length; // 循环索引
             document.getElementById("sceneryImage").src = images[currentIndex]; // 更换图片地址
