@@ -9,7 +9,7 @@
         body {
             font-family: "Helvetica Neue", sans-serif; 
             background-color: #f4f4f9;             
-	    margin: 0;
+            margin: 0;
             padding: 0;
         }
 
@@ -122,11 +122,11 @@
     <section id="intro">
         <h2>家乡简介</h2>
         <p>赵桥建于明朝永乐二年（1404），山西洪洞县移民迁居此处立村不久，附近滏阳河上木桥着火，人们称之为“着桥村”，后根据“着”字谐音演变为“赵桥村”。因村形较大，又是一集镇，亦称赵桥镇。</p>
- 	<p>抗日战争时期，这里为日伪统治区。</p>
-	<p>1945年解放，1947年进行土改，1952年办互助乡，1953年建赵桥乡；</p>
-	<p>1954年建初级社，1958年改人民公社；同年省武邑入衡水县改隶衡水市。</p>
-	<p>1962年初恢复武邑县，本社还属武邑县。</p>
-	<p>1984年复置乡；1996年前怀甫乡并入；1998年撤乡建赵桥镇至今。</p>
+        <p>抗日战争时期，这里为日伪统治区。</p>
+        <p>1945年解放，1947年进行土改，1952年办互助乡，1953年建赵桥乡；</p>
+        <p>1954年建初级社，1958年改人民公社；同年省武邑入衡水县改隶衡水市。</p>
+        <p>1962年初恢复武邑县，本社还属武邑县。</p>
+        <p>1984年复置乡；1996年前怀甫乡并入；1998年撤乡建赵桥镇至今。</p>
         <div class="image-container">
             <img id="introImage" src="zhaoqiao.jpg" alt="武邑县风景" />
         </div>
@@ -138,8 +138,7 @@
         <p>武邑拥有多处自然与人文景观，如关津公园、动物园等，是休闲观光的好去处。</p>
         <div class="image-container">
             <img id="sceneryImage" src="view1.jpg" alt="武邑景点" />
-            <!-- 点击切换图片按钮 -->
-            <button class="btn" onclick="changeImage()">换一张图片</button>
+            <button class="btn" onclick="changeSceneryImage()">换一张图片</button>
         </div>
     </section>
 
@@ -147,15 +146,13 @@
     <section id="culture">
         <h2>地方文化</h2>
         <p>这里有传统的武邑琴书、丰富的民俗节庆活动，还有源远流长的教育文化氛围，是文化与现代交融的典范。</p>
-	<div class="image-container">
-            <img id="sceneryImage" src="庙会1.jpg" alt="武邑文化" />
-            <!-- 点击切换图片按钮 -->
-            <button class="btn" onclick="changeImage()">换一张图片</button>
+        <div class="image-container">
+            <img id="cultureImage" src="庙会1.jpg" alt="武邑文化" />
+            <button class="btn" onclick="changeCultureImage()">换一张图片</button>
         </div>
-
     </section>
 
-    <!-- 页面右下角返回顶部按钮 -->
+    <!-- 返回顶部按钮 -->
     <button id="backToTop" onclick="scrollToTop()">返回顶部</button>
 
     <!-- 页脚 -->
@@ -163,43 +160,47 @@
         <p>&copy; 2025 我的家乡 · 武邑县</p>
     </footer>
 
-    <!-- 背景音乐元素，初始静音 -->
+    <!-- 背景音乐 -->
     <audio id="bgMusic" src="http://music.163.com/song/media/outer/url?id=1392990601.mp3"></audio>
 
+    <!-- 脚本区域 -->
     <script>
-        // 图片数组，用于风景区切换
-        const images = [
+        // 风景区图片切换
+        const sceneryImages = [
             "view2.jpg"
         ];
-        let currentIndex = 0; // 当前图片索引
-
-        // 切换图片函数
-        function changeImage() {
-            currentIndex = (currentIndex + 1) % images.length; // 循环索引
-            document.getElementById("sceneryImage").src = images[currentIndex]; // 更换图片地址
+        let sceneryIndex = 0;
+        function changeSceneryImage() {
+            sceneryIndex = (sceneryIndex + 1) % sceneryImages.length;
+            document.getElementById("sceneryImage").src = sceneryImages[sceneryIndex];
         }
 
-        // 播放背景音乐函数
+        // 文化区图片切换
+        const cultureImages = [
+            "庙会2.jpg", "庙会3.jpg", "庙会4.jpg"
+        ];
+        let cultureIndex = 0;
+        function changeCultureImage() {
+            cultureIndex = (cultureIndex + 1) % cultureImages.length;
+            document.getElementById("cultureImage").src = cultureImages[cultureIndex];
+        }
+
+        // 播放背景音乐
         function playMusic() {
             const music = document.getElementById("bgMusic");
-            music.muted = false; // 解除静音
-            music.play(); // 播放音乐
+            music.muted = false;
+            music.play();
         }
 
-        // 获取返回顶部按钮元素
+        // 返回顶部按钮逻辑
         const backToTopButton = document.getElementById("backToTop");
-
-        // 监听页面滚动，显示或隐藏返回顶部按钮
         window.onscroll = () => {
-            // 滚动距离超过200像素时显示按钮，否则隐藏
             if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
                 backToTopButton.style.display = "block";
             } else {
                 backToTopButton.style.display = "none";
             }
         };
-
-        // 平滑滚动到顶部函数
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
